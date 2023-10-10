@@ -1,8 +1,10 @@
 import { Entity,
     PrimaryGeneratedColumn,
     Column,
-    CreateDateColumn,UpdateDateColumn, OneToMany  } from "typeorm";
+    CreateDateColumn, OneToMany, UpdateDateColumn  } from "typeorm";
 import { Roles } from "./userRoles";
+import { Genre } from "src/genre/entities/genre.entity";
+import { Livre } from "src/livres/entities/livre.entity";
 @Entity('users')
 export class UserEntity {
     @PrimaryGeneratedColumn()
@@ -25,5 +27,8 @@ export class UserEntity {
     createdAt: Date;
     @UpdateDateColumn({ type: 'timestamp' })
     updatedAt: Date;
-
+    @OneToMany(()=>Genre,(gen)=>gen.addBy)
+    genre:Genre[];
+    @OneToMany(() => Livre,(livre)=>livre.addBy)
+    livre:Livre[];
 }
