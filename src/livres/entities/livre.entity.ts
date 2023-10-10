@@ -8,22 +8,22 @@ export class Livre {
     id:number;
 
     @Column()
-    book_title:string;
+    title:string;
 
     @Column()
-    book_description:string;
+    description:string;
 
     @Column({type:'decimal',precision:10,scale:2,default:0})
-    book_price:number;
+    price:number;
 
     @Column()
-    book_author:string;
+    author:string;
 
     @Column()
-    book_stock:number;
+    stock:number;
 
     @Column('simple-array')
-    book_images:string[];
+    images:string[];
 
     @CreateDateColumn()
     createAt: Timestamp;
